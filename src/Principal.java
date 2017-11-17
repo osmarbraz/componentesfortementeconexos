@@ -6,6 +6,7 @@
  * Prof Alexandre Gonçalves da Silva 
  *
  * Baseado nos slides 21 da aula do dia 20/10/2017 
+ *
  * Página 448 Cormen 3a Ed
  *
  * Componentes Fortemente Conexos
