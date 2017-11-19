@@ -9,7 +9,7 @@
  *
  * Página 448 Thomas H. Cormen 3a Ed
  *
- * Componentes Fortemente Conexos
+ * Componentes Fortemente Conexos/Strongly Connected Components
  */
 
 /**
@@ -303,7 +303,7 @@ public class Principal {
                 {0, 0, 1, 0, 0, 0, 0, 1},//e
                 {0, 0, 0, 0, 0, 1, 0, 0}};//a                
     
-        System.out.println("Componentes Fortemente Conexos");
+        System.out.println(">>> Componentes Fortemente Conexos/Strongly Connected Components <<<");
 
         //Monta os componentes fortemente conexos do grafo G
         componentesFortementeConexos(G);
