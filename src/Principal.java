@@ -7,7 +7,7 @@
  *
  * Baseado nos slides 21 da aula do dia 20/10/2017 
  *
- * Página 448 Cormen 3a Ed
+ * Página 448 Thomas H. Cormen 3a Ed
  *
  * Componentes Fortemente Conexos
  */
@@ -290,7 +290,7 @@ public class Principal {
 
         //Matriz de incidência para um grafo direcionado     
         //Grafo do slide 23
-        //Página 449 Cormen 3ed
+        //Página 449 Thomas H. Cormen 3ed
        
         int G[][] =                         
                //c  g  f  h  d  b  e  a
