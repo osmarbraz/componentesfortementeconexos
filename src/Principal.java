@@ -15,6 +15,7 @@
 /**
  * @author Osmar de Oliveira Braz Junior
  */
+
 import java.util.Stack;
 
 public class Principal {
@@ -34,8 +35,6 @@ public class Principal {
     //Vertor dos pais de um vértice
     static int pi[];
     static int tempo;
-    
-    static Stack q;
         
     /**
      * Troca um número que representa a posição pela vértice do grafo.
@@ -72,14 +71,14 @@ public class Principal {
      * @param s Origem no grafo
      * @param v Destino no grafo
      */
-    public static void printPath(int[][] G, int s, int v) {
+    public static void mostrarCaminho(int[][] G, int s, int v) {
         if (v == s) {
             System.out.println("Cheguei em:" + trocar(s));
         } else {
             if (pi[v] == -1) {
                 System.out.println("Não existe caminho de " + trocar(s) + " a " + trocar(v));
             } else {
-                printPath(G, s, pi[v]);
+                mostrarCaminho(G, s, pi[v]);
                 System.out.println("Visitando:" + trocar(v));
             }
         }
@@ -95,7 +94,7 @@ public class Principal {
      * @param G Matriz de incidência do grafo
      * @param u Vértice raiz da árvore de busca
      */
-    public static void buscaEmProfundidadeVisita(int[][] G, int u) {
+    public static void buscaEmProfundidadeVisita(int[][] G, int u, Stack q) {
         //Quantidade vértices do grafo
         int n = G.length;
         cor[u] = CINZA;
@@ -108,7 +107,7 @@ public class Principal {
                 //Somente vértices nao visitados
                 if (cor[v] == BRANCO) {
                     pi[v] = u;
-                    buscaEmProfundidadeVisita(G, v);
+                    buscaEmProfundidadeVisita(G, v, q);
                 }
             }
         }
@@ -117,7 +116,7 @@ public class Principal {
         tempo = tempo + 1;
         f[u] = tempo;       
         
-        //Empilha v
+        //Empilha v que foi visitado
         q.push(u);
     }
 
@@ -168,8 +167,9 @@ public class Principal {
      *
      * Método DFS(G)
      * @param G Grafo na forma de uma matriz de adjacência
+     * @param q Lista da ordem de visita
      */
-    public static void buscaEmProfundidadeRecursivo(int[][] G) {
+    public static void buscaEmProfundidadeRecursivo(int[][] G, Stack q) {
         //Quantidade vértices do grafo
         int n = G.length;
 
@@ -194,7 +194,7 @@ public class Principal {
         for (int u = 0; u < n; u++) {
             //Somente vértices nao visitados
            if (cor[u] == BRANCO) {
-                buscaEmProfundidadeVisita(G, u);
+                buscaEmProfundidadeVisita(G, u, q);
             }                    
         }
     }    
@@ -211,8 +211,11 @@ public class Principal {
      *
      * Método DFS(G)
      * @param G Grafo na forma de uma matriz de adjacência
+     * @param q Lista da ordem de visita
      */
-    public static void buscaEmProfundidadeRecursivo2(int[][] G) {
+    public static void buscaEmProfundidadeRecursivo2(int[][] G, Stack q) {
+        //Vertices de cada árvore visitada
+        
         //Quantidade vértices do grafo
         int n = G.length;
 
@@ -231,12 +234,13 @@ public class Principal {
             pi[u] = -1;
         }
         tempo = 0;
-
+      
         //Utiliza a pilha realizada com a DFS em G para mostrar 
         //os componentes fortemente conexos
         while(!q.isEmpty()) {
             int u = (int)q.pop();                
             if (cor[u] == BRANCO) {
+                //Conjuntos de vértices de cada árvore da Floresta de Busca em Profundidade obtida.
                 System.out.println("\nComponente:"+trocar(u));
                 buscaEmProfundidadeVisita2(G, u);
             }                
@@ -267,14 +271,13 @@ public class Principal {
     public static void componentesFortementeConexos(int[][] G) {
         
         //Pilha para armazenar a ordem de visita dos vértices pela DFS em G
-        q = new Stack();       
+        Stack q = new Stack();       
         
-        //Executa o DFS empilhando o elemento visitado
-        buscaEmProfundidadeRecursivo(G);
+        //Passo 1 - Executa o DFS(G) empilhando o elemento visitado        
+        buscaEmProfundidadeRecursivo(G, q);
                        
         System.out.println();
-        System.out.println("Ordem de execução de d[x]/f[x] em G ");
-        //for (int i = G.length-1; i >= 0; i--) {
+        System.out.println("Ordem de execução de d[x]/f[x] em G ");             
         for (int i = 0; i < G.length; i++) {
             System.out.println(trocar(i) + "=" + d[i] + "/" + f[i]);
         }
@@ -283,7 +286,7 @@ public class Principal {
         int[][] Gt = transposta(G);
         
         //Realiza a busca em profundidade mostrando os componentes conexos
-        buscaEmProfundidadeRecursivo2(Gt);            
+        buscaEmProfundidadeRecursivo2(Gt, q);            
     }
 
     public static void main(String args[]) {
