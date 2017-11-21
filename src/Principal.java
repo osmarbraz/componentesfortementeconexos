@@ -32,7 +32,7 @@ public class Principal {
     static int d[];
     //f[x] armazena o instante de finalização de x.
     static int f[];    
-    //Vertor dos pais de um vértice
+    //Vetor dos pais de um vértice
     static int pi[];
     static int tempo;
         
