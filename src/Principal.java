@@ -43,8 +43,12 @@ public class Principal {
      * @return Uma String com a letra da posição
      */
     public static String trocar(int i) {
-        String letras = "cgfhdbea";
-        return letras.charAt(i) + "";
+        String letras = "cgfhdbea";        
+        if ((i >=0) && (i<=letras.length())) {
+            return letras.charAt(i) + "";
+        } else {
+            return "-";
+        }     
     }
 
     /**
@@ -311,5 +315,9 @@ public class Principal {
         //Monta os componentes fortemente conexos do grafo G
         componentesFortementeConexos(G);
 
+        System.out.println("\nMostrando todos dados:");
+        for (int i = 0; i < G.length; i++) {
+            System.out.println(trocar(pi[i]) + " -> " +  trocar(i) + " custo: " + d[i]);
+        }        
     }
 }
