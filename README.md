@@ -9,4 +9,7 @@ Baseado nos slides 21 da aula do dia 20/10/2017 <br>
 Página 448 Thomas H. Cormen 3a Ed <br>
 <br>
 Componentes Fortemente Conexos/Strongly Connected Components<br>
-Monta os componentes fortemente conexos do grafo<br>
+Aplicações:<br>
+- Decompõe um grafo direcionado desconexo em seus componentes fortemente conexos.<br>
+- Problema da satisfação booleana (SAT) <br>
+- Etc.<br>
