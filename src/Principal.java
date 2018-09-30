@@ -71,7 +71,7 @@ public class Principal {
     /**
      * Mostra o caminho de s até v no grafo G
      *
-     * @param G Matriz de incidência do grafo
+     * @param G Matriz de adjacência do grafo
      * @param s Origem no grafo
      * @param v Destino no grafo
      */
@@ -95,8 +95,9 @@ public class Principal {
      *
      * Método DFS-Visit(G,u) com empilhamento
      * 
-     * @param G Matriz de incidência do grafo
+     * @param G Matriz de adjacência do grafo
      * @param u Vértice raiz da árvore de busca
+     * @param q Pilha da ordem de visita
      */
     public static void buscaEmProfundidadeVisita(int[][] G, int u, Stack q) {
         //Quantidade vértices do grafo
@@ -131,7 +132,7 @@ public class Principal {
      *
      * Método DFS-Visit(G,u)
      * 
-     * @param G Matriz de incidência do grafo
+     * @param G Matriz de adjacência do grafo
      * @param u Vértice raiz da árvore de busca
      */
     public static void buscaEmProfundidadeVisita2(int[][] G, int u) {
@@ -171,7 +172,7 @@ public class Principal {
      *
      * Método DFS(G)
      * @param G Grafo na forma de uma matriz de adjacência
-     * @param q Lista da ordem de visita
+     * @param q Pilha da ordem de visita
      */
     public static void buscaEmProfundidadeRecursivo(int[][] G, Stack q) {
         //Quantidade vértices do grafo
@@ -215,7 +216,7 @@ public class Principal {
      *
      * Método DFS(G)
      * @param G Grafo na forma de uma matriz de adjacência
-     * @param q Lista da ordem de visita
+     * @param q Pilha da ordem de visita
      */
     public static void buscaEmProfundidadeRecursivo2(int[][] G, Stack q) {
         //Vertices de cada árvore visitada
@@ -295,7 +296,7 @@ public class Principal {
 
     public static void main(String args[]) {
 
-        //Matriz de incidência para um grafo direcionado     
+        //Matriz de adjacência para um grafo direcionado     
         //Grafo do slide 23
         //Página 449 Thomas H. Cormen 3ed
        
